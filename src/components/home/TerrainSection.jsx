@@ -57,17 +57,17 @@ const TerrainSection = () => {
             viewport={{ once: true }}
             className="grid grid-cols-2 gap-4"
           >
-            <img 
+            <img
               alt="Espace extérieur arboré du site de paintball"
-              className="rounded-xl h-56 w-full object-cover shadow-lg"
+              className="rounded-xl w-full aspect-video object-cover shadow-lg"
               src={terrainImage1Url} />
-            <img 
+            <img
               alt="Animateur briefant un groupe de joueurs de paintball"
-              className="rounded-xl h-56 w-full object-cover shadow-lg"
+              className="rounded-xl w-full aspect-video object-cover shadow-lg"
               src={terrainImage2Url} />
-            <img 
+            <img
               alt="Passage couvert de bambous menant aux terrains de paintball"
-              className="rounded-xl h-56 w-full object-cover col-span-2 shadow-lg"
+              className="rounded-xl w-full aspect-video object-cover col-span-2 shadow-lg"
               src={terrainImage3Url} />
           </motion.div>
         </div>

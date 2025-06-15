@@ -40,9 +40,9 @@ const HeroSection = () => {
             className="relative"
           >
             <div className="float-animation">
-              <img 
+              <img
                 alt="Joueur de paintball en armure de lapin futuriste"
-                className="rounded-2xl shadow-2xl w-full h-96 object-cover"
+                className="rounded-2xl shadow-2xl w-full aspect-video object-cover"
                 src={heroImageUrl} />
             </div>
             <div className="absolute -bottom-6 -left-6 glass-effect rounded-xl p-4">
