@@ -54,7 +54,7 @@ const ContactSection = () => {
               title="Carte Paintball Méditerranée"
               aria-label="Emplacement sur Google Maps"
               src="https://www.google.com/maps?q=140+Passage+Charles+Tillon,+34070+Montpellier&output=embed"
-              className="rounded-xl w-full h-96 shadow-lg border-0"
+              className="rounded-xl w-full aspect-video h-auto shadow-lg border-0"
               loading="lazy"
             ></iframe>
           </motion.div>
