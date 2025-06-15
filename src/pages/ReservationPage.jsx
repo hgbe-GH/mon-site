@@ -1,9 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { packagesData } from '@/components/home/PackagesSection';
+
+const tarifs = {
+  decouverte: 25,
+  mediterranee: 30,
+  player: 35,
+  punisher: 40,
+  expendable: 45,
+  gotcha: 20,
+};
 
 const ReservationPage = () => {
   const location = useLocation();
@@ -17,6 +26,19 @@ const ReservationPage = () => {
     people: 1,
     date: initialDate,
   });
+
+  const [totals, setTotals] = useState({ total: 0, deposit: 0 });
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    const unit = tarifs[formData.package] || 0;
+    const total = unit * Math.max(parseInt(formData.people, 10) || 0, 0);
+    const deposit = Math.round(total * 0.3);
+    setTotals({ total, deposit });
+    setAnimate(true);
+    const t = setTimeout(() => setAnimate(false), 300);
+    return () => clearTimeout(t);
+  }, [formData.package, formData.people]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -120,7 +142,22 @@ const ReservationPage = () => {
               />
             </div>
           </div>
-          <Button type="submit" className="mt-6 w-full bg-primary hover:bg-primary/80">
+          <div className={`mt-4 p-4 rounded-md bg-gray-100 text-center ${animate ? 'animate-pulse' : ''}`}>
+            <p className="text-xl font-bold text-orange-500">
+              Prix total&nbsp;: {totals.total} €
+            </p>
+            <p className="font-semibold text-gray-700">
+              Acompte (30%)&nbsp;: {totals.deposit} €
+            </p>
+          </div>
+          <Button type="submit" className="mt-6 w-full bg-primary hover:bg-primary/80" disabled={
+            !formData.firstName ||
+            !formData.lastName ||
+            !formData.email ||
+            !formData.phone ||
+            !formData.date ||
+            parseInt(formData.people, 10) < 1
+          }>
             Réserver
           </Button>
         </form>
