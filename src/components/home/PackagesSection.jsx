@@ -96,7 +96,8 @@ const PackagesSection = ({ selectedPackage, onSelectPackage }) => {
                   </li>
                 ))}
               </ul>
-              <Button 
+              <Button
+                aria-label={`Choisir le forfait ${pkg.name}`}
                 className="w-full mt-6 bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600"
                 onClick={(e) => {
                   e.stopPropagation();
