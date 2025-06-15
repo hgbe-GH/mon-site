@@ -51,11 +51,11 @@ const ReservationPage = () => {
   };
 
   return (
-    <section className="py-12">
+    <section className="py-12 sm:py-16">
       <div className="container mx-auto px-4">
         <h1 className="text-xl md:text-2xl font-bold text-center mb-8">Réserver une session</h1>
-        <form onSubmit={handleSubmit} className="max-w-2xl mx-auto rounded-xl p-6 shadow-md bg-white">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <form onSubmit={handleSubmit} className="max-w-2xl mx-auto rounded-xl p-4 sm:p-6 shadow-md bg-white">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             <div>
               <Label htmlFor="firstName">Prénom</Label>
               <Input

@@ -51,7 +51,7 @@ const ProQuotePage = () => {
   return (
     <motion.section 
       id="espace-pro" 
-      className="py-20"
+      className="py-16 sm:py-20"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -65,14 +65,14 @@ const ProQuotePage = () => {
         >
           <Briefcase className="w-16 h-16 text-orange-400 mx-auto mb-6" />
           <h1 className="text-4xl lg:text-5xl font-bold text-gradient mb-6">Espace Professionnels & Groupes</h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-sm sm:text-xl text-gray-300 max-w-3xl mx-auto">
             Organisez vos événements d'entreprise, team building, ou sorties de groupe sur mesure. 
             Remplissez le formulaire ci-dessous pour obtenir un devis personnalisé.
           </p>
         </motion.div>
 
         <motion.div 
-          className="max-w-2xl mx-auto glass-effect rounded-xl p-8 shadow-2xl"
+          className="max-w-2xl mx-auto glass-effect rounded-xl p-4 sm:p-8 shadow-2xl"
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
@@ -104,7 +104,7 @@ const ProQuotePage = () => {
                 required 
               />
             </div>
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
               <div>
                 <Label htmlFor="email" className="text-white">Email *</Label>
                 <Input 
@@ -131,7 +131,7 @@ const ProQuotePage = () => {
                 />
               </div>
             </div>
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
               <div>
                 <Label htmlFor="numParticipants" className="text-white">Nombre de participants (estimé) *</Label>
                 <Input 

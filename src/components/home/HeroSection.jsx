@@ -7,21 +7,21 @@ const heroImageUrl = "https://storage.googleapis.com/hostinger-horizons-assets-p
 
 const HeroSection = () => {
   return (
-    <section id="accueil" className="relative py-20 overflow-hidden" data-aos="fade-up">
+    <section id="accueil" className="relative py-16 sm:py-20 overflow-hidden" data-aos="fade-up">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <motion.div
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <h1 className="text-5xl lg:text-7xl font-bold mb-6 text-white">
+            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-bold mb-6 text-white">
               Paintball Méditerranée – le meilleur terrain de Montpellier
             </h1>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+            <p className="text-sm sm:text-xl text-gray-300 mb-8 leading-relaxed">
               3 terrains de 4 hectares en pleine nature, en bord de rivière, avec zones ombragées, buvette, fléchettes et pétanque. Dès 7 ans, billes biodégradables. Réservation obligatoire.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 size="lg"
                 aria-label="Voir les formules"
