@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route, Link, NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Toaster } from '@/components/ui/toaster';
 import HomePage from '@/pages/HomePage';
 import ProQuotePage from '@/pages/ProQuotePage';
 import { Phone, Mail, Briefcase } from 'lucide-react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const newLogoUrl = "https://storage.googleapis.com/hostinger-horizons-assets-prod/d920d526-dc48-47a4-aa51-9f37007af78b/4e66082661f8aeef2e96d545bee304c1.png";
 
 function App() {
+  useEffect(() => {
+    AOS.init({ once: true });
+  }, []);
   const navLinkClasses = ({ isActive }) => 
     `text-white hover:text-orange-400 transition-colors px-3 py-2 rounded-md ${isActive ? 'bg-white/10 text-orange-400' : ''}`;
 

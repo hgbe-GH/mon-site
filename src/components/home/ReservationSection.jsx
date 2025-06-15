@@ -56,6 +56,7 @@ const Calendar = ({ currentMonth, selectedDate, onDateSelect, onMonthChange }) =
         <h3 className="text-xl font-semibold text-white">Choisir une date</h3>
         <div className="flex items-center space-x-2 sm:space-x-4">
           <Button
+            aria-label="Mois précédent"
             variant="ghost"
             size="sm"
             onClick={() => onMonthChange(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1))}
@@ -67,6 +68,7 @@ const Calendar = ({ currentMonth, selectedDate, onDateSelect, onMonthChange }) =
             {monthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}
           </span>
           <Button
+            aria-label="Mois suivant"
             variant="ghost"
             size="sm"
             onClick={() => onMonthChange(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1))}
@@ -137,10 +139,11 @@ const BookingSummary = ({ selectedDate, selectedTime, selectedPackageId, onTimeS
           {timeSlots.map(time => (
             <Button
               key={time}
+              aria-label={`Choisir l'horaire ${time}`}
               variant={selectedTime === time ? "default" : "outline"}
               className={`text-xs sm:text-sm ${
-                selectedTime === time 
-                  ? 'bg-gradient-to-r from-orange-500 to-yellow-500' 
+                selectedTime === time
+                  ? 'bg-gradient-to-r from-orange-500 to-yellow-500'
                   : 'border-white/30 text-white hover:bg-white/10'
               }`}
               onClick={() => onTimeSelect(time)}
@@ -190,7 +193,8 @@ const BookingSummary = ({ selectedDate, selectedTime, selectedPackageId, onTimeS
             </>
           )}
         </div>
-        <Button 
+        <Button
+          aria-label="Confirmer la réservation"
           className="w-full mt-6 bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 pulse-glow"
           onClick={onReserve}
           disabled={!selectedDate || !selectedTime || !selectedPackageId}

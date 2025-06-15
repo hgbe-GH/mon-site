@@ -28,8 +28,9 @@ const ContactSection = () => {
             <div className="glass-effect rounded-xl p-6">
               <Phone className="w-8 h-8 text-orange-400 mb-4" />
               <h3 className="text-xl font-semibold text-white mb-2">Téléphone</h3>
-              <p className="text-gray-300">04 67 XX XX XX</p>
-              <p className="text-sm text-gray-400">Lun-Dim: 9h-18h</p>
+              <p className="text-gray-300">06 23 73 50 02</p>
+              <p className="text-sm text-gray-400">Ouvert tous les jours sur réservation</p>
+              <p className="text-sm text-gray-400">Fermé mardi et jeudi matin</p>
             </div>
             <div className="glass-effect rounded-xl p-6">
               <Mail className="w-8 h-8 text-orange-400 mb-4" />
@@ -40,7 +41,7 @@ const ContactSection = () => {
             <div className="glass-effect rounded-xl p-6">
               <MapPin className="w-8 h-8 text-orange-400 mb-4" />
               <h3 className="text-xl font-semibold text-white mb-2">Adresse</h3>
-              <p className="text-gray-300">Route de la Méditerranée<br />34000 Montpellier</p>
+              <p className="text-gray-300">140 Passage Charles Tillon,<br />34070 Montpellier</p>
               <p className="text-sm text-gray-400">Parking gratuit sur site</p>
             </div>
           </motion.div>
@@ -49,10 +50,13 @@ const ContactSection = () => {
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
           >
-            <img 
-              alt="Équipement de paintball, masques et lanceurs, rangés sur des étagères"
-              className="rounded-xl w-full h-96 object-cover shadow-lg"
-              src={contactImageUrl} />
+            <iframe
+              title="Carte Paintball Méditerranée"
+              aria-label="Emplacement sur Google Maps"
+              src="https://www.google.com/maps?q=140+Passage+Charles+Tillon,+34070+Montpellier&output=embed"
+              className="rounded-xl w-full h-96 shadow-lg border-0"
+              loading="lazy"
+            ></iframe>
           </motion.div>
         </div>
       </div>

@@ -7,7 +7,7 @@ const heroImageUrl = "https://storage.googleapis.com/hostinger-horizons-assets-p
 
 const HeroSection = () => {
   return (
-    <section id="accueil" className="relative py-20 overflow-hidden">
+    <section id="accueil" className="relative py-20 overflow-hidden" data-aos="fade-up">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -15,31 +15,21 @@ const HeroSection = () => {
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <h1 className="text-5xl lg:text-7xl font-bold mb-6">
-              <span className="text-gradient">Paintball</span>
-              <br />
-              <span className="text-white">Méditerranée</span>
+            <h1 className="text-5xl lg:text-7xl font-bold mb-6 text-white">
+              Paintball Méditerranée – le meilleur terrain de Montpellier
             </h1>
             <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              Vivez l'adrénaline du paintball dans un cadre méditerranéen exceptionnel. 
-              Terrains variés, équipements professionnels et ambiance garantie ! Ouvert à tous, y compris aux enfants dès 8 ans avec notre équipement Gotcha spécial.
+              3 terrains de 4 hectares en pleine nature, en bord de rivière, avec zones ombragées, buvette, fléchettes et pétanque. Dès 7 ans, billes biodégradables. Réservation obligatoire.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-semibold px-8 py-3 pulse-glow"
-                onClick={() => document.getElementById('reservation')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                Réserver maintenant
-                <ChevronRight className="ml-2 w-5 h-5" />
-              </Button>
-              <Button 
-                variant="outline" 
+              <Button
                 size="lg"
-                className="border-white/30 text-white hover:bg-white/10"
-                onClick={() => document.getElementById('terrain')?.scrollIntoView({ behavior: 'smooth' })}
+                aria-label="Voir les formules"
+                className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-semibold px-8 py-3"
+                onClick={() => document.getElementById('tarifs')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Découvrir le terrain
+                Voir les formules
+                <ChevronRight className="ml-2 w-5 h-5" />
               </Button>
             </div>
           </motion.div>
