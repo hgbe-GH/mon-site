@@ -44,7 +44,7 @@ const packagesData = [
     id: 'expendable',
     name: 'Expendable',
     price: 45,
-    duration: 'Session libre (jusqu\u2019\u00e0 3h)',
+    duration: 'jusqu\u2019\u00e0 3h',
     players: '600 billes',
     description: '',
     features: ['Repas inclus', 'Animateur d\u00e9di\u00e9']

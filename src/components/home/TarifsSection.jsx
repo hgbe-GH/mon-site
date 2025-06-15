@@ -6,7 +6,8 @@ const tarifs = [
   { name: 'Méditerranée', billes: 200, duree: '60–90 min', prix: '25 €' },
   { name: 'Player', billes: 300, duree: '90–120 min', prix: '30 €' },
   { name: 'Punisher', billes: 400, duree: '90–120 min', prix: '35 €' },
-  { name: 'Expendable', billes: 600, duree: 'illimité', prix: '45 €' },
+  { name: 'Expendable', billes: 600, duree: 'jusqu\u2019\u00e0 3h', prix: '45 €' },
+  { name: 'Enfant Gotcha', billes: 'billes lavables', duree: '6–10 ans', prix: '20 €' },
 ];
 
 const TarifsSection = () => {
