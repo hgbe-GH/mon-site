@@ -35,7 +35,7 @@ function App() {
                   <p className="text-xs text-gray-300 hidden sm:block">Montpellier</p>
                 </div>
               </Link>
-              <nav className="flex items-center space-x-1 md:space-x-4">
+              <nav className="flex flex-wrap items-center gap-2 md:space-x-4 text-sm">
                 <NavLink to="/" className={navLinkClasses}>Accueil</NavLink>
                 <NavLink to="/#terrain" className={navLinkClasses} onClick={() => setTimeout(() => document.getElementById('terrain')?.scrollIntoView({ behavior: 'smooth' }),0)}>Le Terrain</NavLink>
                 <NavLink to="/#forfaits" className={navLinkClasses} onClick={() => setTimeout(() => document.getElementById('forfaits')?.scrollIntoView({ behavior: 'smooth' }),0)}>Forfaits</NavLink>

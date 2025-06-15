@@ -53,7 +53,7 @@ const Calendar = ({ currentMonth, selectedDate, onDateSelect, onMonthChange }) =
       initial={{ x: -100, opacity: 0 }}
       whileInView={{ x: 0, opacity: 1 }}
       viewport={{ once: true }}
-      className="glass-effect rounded-xl p-6"
+      className="glass-effect rounded-xl p-4 sm:p-6 overflow-hidden"
     >
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-semibold text-white">Choisir une date</h3>
@@ -149,7 +149,7 @@ const BookingSummary = ({
       viewport={{ once: true }}
       className="space-y-6"
     >
-      <div className="glass-effect rounded-xl p-6">
+      <div className="glass-effect rounded-xl p-4 sm:p-6">
         <h3 className="text-xl font-semibold text-white mb-4">Horaires disponibles</h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {timeSlots.map(time => (
@@ -171,7 +171,7 @@ const BookingSummary = ({
         </div>
       </div>
 
-      <div className="glass-effect rounded-xl p-6">
+      <div className="glass-effect rounded-xl p-4 sm:p-6">
         <h3 className="text-xl font-semibold text-white mb-4">Récapitulatif</h3>
         <div className="space-y-3 text-sm">
           <div className="flex justify-between">
@@ -209,7 +209,7 @@ const BookingSummary = ({
             </>
           )}
         </div>
-        <div className="grid sm:grid-cols-2 gap-4 mt-6">
+        <div className="grid sm:grid-cols-2 gap-4 mt-6 text-sm">
           <div>
             <Label htmlFor="firstName" className="text-white">Prénom</Label>
             <Input
@@ -369,11 +369,11 @@ const ReservationSection = ({ selectedPackage, onSelectPackage }) => {
           className="text-center mb-16"
         >
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gradient mb-6">Réservez votre session</h2>
-          <p className="text-xl text-gray-300">Sélectionnez votre date et horaire préférés</p>
+          <p className="text-sm sm:text-xl text-gray-300">Sélectionnez votre date et horaire préférés</p>
         </motion.div>
 
         <div className="max-w-4xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid lg:grid-cols-2 gap-4 lg:gap-8">
             <div>
               <Calendar
                 currentMonth={currentMonth}

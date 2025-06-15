@@ -11,9 +11,9 @@ const features = [
 
 const FeaturesSection = () => {
   return (
-    <section className="py-16">
+  <section className="py-12 sm:py-16">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -21,11 +21,11 @@ const FeaturesSection = () => {
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="glass-effect rounded-xl p-6 text-center hover:scale-105 transition-transform"
+              className="glass-effect rounded-xl p-4 sm:p-6 text-center hover:scale-105 transition-transform"
             >
-              <feature.icon className="w-12 h-12 text-orange-400 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
-              <p className="text-gray-300">{feature.desc}</p>
+                <feature.icon className="w-12 h-12 text-orange-400 mx-auto mb-4" />
+                <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">{feature.title}</h3>
+                <p className="text-sm text-gray-300">{feature.desc}</p>
             </motion.div>
           ))}
         </div>

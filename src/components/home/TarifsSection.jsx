@@ -12,7 +12,7 @@ const tarifs = [
 ];
 
 const TarifsSection = () => (
-  <section id="tarifs" className="py-20">
+  <section id="tarifs" className="py-16 sm:py-20">
     <div className="container mx-auto px-4">
       <motion.div
         initial={{ y: 50, opacity: 0 }}
@@ -23,12 +23,12 @@ const TarifsSection = () => (
         <h2 className="text-4xl lg:text-5xl font-bold text-gradient mb-6">
           Nos formules
         </h2>
-        <p className="text-xl text-gray-300">
+        <p className="text-sm sm:text-xl text-gray-300">
           Choisissez la formule qui vous convient
         </p>
       </motion.div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
         {tarifs.map((t, index) => (
           <motion.div
             key={t.name}
@@ -36,9 +36,9 @@ const TarifsSection = () => (
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className="glass-effect rounded-xl p-6 flex flex-col items-center text-center hover:scale-105 transition-transform"
+            className="glass-effect rounded-xl p-4 sm:p-6 flex flex-col items-center text-center hover:scale-105 transition-transform"
           >
-            <h3 className="text-2xl font-bold text-white mb-1">{t.name}</h3>
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">{t.name}</h3>
             <p className="text-gray-300 mb-4">
               {t.billes} – {t.duree}
             </p>
@@ -47,7 +47,7 @@ const TarifsSection = () => (
             </div>
             <Button
               aria-label={`Réserver la formule ${t.name}`}
-              className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600"
+              className="w-full bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600"
               onClick={() =>
                 document
                   .getElementById('reservation')
