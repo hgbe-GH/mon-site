@@ -5,15 +5,6 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { packagesData } from '@/components/home/PackagesSection';
 
-const tarifs = {
-  decouverte: 25,
-  mediterranee: 30,
-  player: 35,
-  punisher: 40,
-  expendable: 45,
-  gotcha: 20,
-};
-
 const ReservationPage = () => {
   const location = useLocation();
   const initialDate = location.state?.selectedDate || '';
@@ -31,7 +22,7 @@ const ReservationPage = () => {
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
-    const unit = tarifs[formData.package] || 0;
+    const unit = packagesData.find((p) => p.id === formData.package)?.price || 0;
     const total = unit * Math.max(parseInt(formData.people, 10) || 0, 0);
     const deposit = Math.round(total * 0.3);
     setTotals({ total, deposit });
@@ -113,7 +104,7 @@ const ReservationPage = () => {
               >
                 {packagesData.map((pkg) => (
                   <option key={pkg.id} value={pkg.id}>
-                    {pkg.name}
+                    {pkg.name} - {pkg.price}€/pers
                   </option>
                 ))}
               </select>
@@ -142,11 +133,13 @@ const ReservationPage = () => {
               />
             </div>
           </div>
-          <div className={`mt-4 p-4 rounded-md bg-gray-100 text-center ${animate ? 'animate-pulse' : ''}`}>
-            <p className="text-xl font-bold text-orange-500">
+          <div
+            className={`mt-6 p-4 rounded-lg bg-orange-50 text-center shadow-md border border-orange-200 ${animate ? 'animate-pulse' : ''}`}
+          >
+            <p className="text-2xl font-extrabold text-orange-600">
               Prix total&nbsp;: {totals.total} €
             </p>
-            <p className="font-semibold text-gray-700">
+            <p className="font-medium text-orange-700">
               Acompte (30%)&nbsp;: {totals.deposit} €
             </p>
           </div>
