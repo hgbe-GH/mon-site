@@ -7,38 +7,56 @@ const packagesData = [
   {
     id: 'decouverte',
     name: 'Découverte',
+    price: 20,
+    duration: '40–60 min',
+    players: '120 billes',
+    description: '',
+    features: ['Équipement complet', 'Briefing sécurité']
+  },
+  {
+    id: 'mediterranee',
+    name: 'Méditerranée',
     price: 25,
-    duration: '2h',
-    players: '6-12',
-    description: 'Parfait pour débuter',
-    features: ['Équipement complet', 'Briefing sécurité', '200 billes incluses']
+    duration: '60–90 min',
+    players: '200 billes',
+    description: '',
+    features: ['Équipement standard', 'Scénarios variés']
   },
   {
-    id: 'aventure',
-    name: 'Aventure',
+    id: 'player',
+    name: 'Player',
+    price: 30,
+    duration: '90–120 min',
+    players: '300 billes',
+    description: '',
+    features: ['Équipement premium', '1 recharge offerte']
+  },
+  {
+    id: 'punisher',
+    name: 'Punisher',
     price: 35,
-    duration: '3h',
-    players: '8-16',
-    description: 'Pour les amateurs',
-    features: ['Équipement premium', 'Scénarios variés', '400 billes incluses', 'Collation']
+    duration: '90–120 min',
+    players: '400 billes',
+    description: '',
+    features: ['Équipement pro', 'Missions spéciales']
   },
   {
-    id: 'commando',
-    name: 'Commando',
-    price: 50,
-    duration: '4h',
-    players: '10-20',
-    description: 'Expérience ultime',
-    features: ['Équipement pro', 'Missions spéciales', '600 billes incluses', 'Repas inclus', 'Photos souvenir']
+    id: 'expendable',
+    name: 'Expendable',
+    price: 45,
+    duration: 'Session libre (jusqu\u2019\u00e0 3h)',
+    players: '600 billes',
+    description: '',
+    features: ['Repas inclus', 'Animateur d\u00e9di\u00e9']
   },
   {
     id: 'gotcha',
-    name: 'Gotcha Enfants',
+    name: 'Enfant Gotcha',
     price: 20,
-    duration: '1h30',
-    players: '6-10 (8-12 ans)',
-    description: 'Paintball adapté aux enfants',
-    features: ['Équipement Gotcha léger', 'Lanceurs à ressort', 'Billes peinture lavable', 'Animateur dédié']
+    duration: '6–10 ans',
+    players: 'Billes lavables',
+    description: '',
+    features: ['Lanceurs \u00e0 ressort', 'Animateur inclus']
   }
 ];
 
@@ -69,14 +87,14 @@ const PackagesSection = ({ selectedPackage, onSelectPackage }) => {
               }`}
               onClick={() => onSelectPackage(pkg.id)}
             >
-              {pkg.id === 'aventure' && (
+              {pkg.id === 'player' && (
                 <div className="absolute top-4 right-4 bg-gradient-to-r from-orange-500 to-yellow-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
                   Populaire
                 </div>
               )}
                {pkg.id === 'gotcha' && (
                 <div className="absolute top-4 left-4 bg-gradient-to-r from-blue-500 to-teal-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                  <Kid className="w-4 h-4 inline mr-1" /> Enfants 8+
+                  <Kid className="w-4 h-4 inline mr-1" /> Enfants 6-10
                 </div>
               )}
               <div className="text-center mb-6">
