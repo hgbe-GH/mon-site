@@ -26,7 +26,7 @@ const HeroSection = () => {
                 size="lg"
                 aria-label="Voir les formules"
                 className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-semibold px-8 py-3"
-                onClick={() => document.getElementById('tarifs')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => document.getElementById('forfaits')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Voir les formules
                 <ChevronRight className="ml-2 w-5 h-5" />

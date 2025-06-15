@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { toast } from '@/components/ui/use-toast';
-import { packagesData } from './PackagesSection';
+import packagesData from '@/data/packages';
 import { supabase } from '@/lib/supabaseClient';
 
 const timeSlots = [
