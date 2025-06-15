@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Toaster } from '@/components/ui/toaster';
 import HomePage from '@/pages/HomePage';
 import ProQuotePage from '@/pages/ProQuotePage';
+import ReservationPage from '@/pages/ReservationPage';
 import { Phone, Mail, Briefcase } from 'lucide-react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -52,6 +53,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/espace-pro" element={<ProQuotePage />} />
+          <Route path="/reservation" element={<ReservationPage />} />
         </Routes>
 
         <Footer />

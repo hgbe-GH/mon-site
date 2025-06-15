@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -276,6 +277,15 @@ const ReservationSection = ({ selectedPackage, onSelectPackage }) => {
   const [selectedTime, setSelectedTime] = useState(null);
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [form, setForm] = useState({ firstName: '', lastName: '', phone: '', people: '' });
+  const navigate = useNavigate();
+
+  const handleGoToReservationPage = () => {
+    if (selectedDate) {
+      navigate('/reservation', {
+        state: { selectedDate: selectedDate.toISOString().split('T')[0] },
+      });
+    }
+  };
 
   const handleReservation = async () => {
     if (!selectedDate || !selectedTime || !selectedPackage || !form.firstName || !form.lastName || !form.phone || !form.people) {
@@ -364,12 +374,21 @@ const ReservationSection = ({ selectedPackage, onSelectPackage }) => {
 
         <div className="max-w-4xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8">
-            <Calendar 
-              currentMonth={currentMonth}
-              selectedDate={selectedDate}
-              onDateSelect={setSelectedDate}
-              onMonthChange={setCurrentMonth}
-            />
+            <div>
+              <Calendar
+                currentMonth={currentMonth}
+                selectedDate={selectedDate}
+                onDateSelect={setSelectedDate}
+                onMonthChange={setCurrentMonth}
+              />
+              <Button
+                className="mt-4 w-full bg-primary hover:bg-primary/80"
+                onClick={handleGoToReservationPage}
+                disabled={!selectedDate}
+              >
+                Réserver cette date
+              </Button>
+            </div>
             <BookingSummary
               selectedDate={selectedDate}
               selectedTime={selectedTime}
