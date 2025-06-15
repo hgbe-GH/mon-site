@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { toast } from '@/components/ui/use-toast';
 import { packagesData } from './PackagesSection';
 import { supabase } from '@/lib/supabaseClient';
@@ -123,8 +125,21 @@ const Calendar = ({ currentMonth, selectedDate, onDateSelect, onMonthChange }) =
   );
 };
 
-const BookingSummary = ({ selectedDate, selectedTime, selectedPackageId, onTimeSelect, onReserve }) => {
+const BookingSummary = ({
+  selectedDate,
+  selectedTime,
+  selectedPackageId,
+  onTimeSelect,
+  form,
+  setForm,
+  onReserve,
+}) => {
   const selectedPkgDetails = packagesData.find(p => p.id === selectedPackageId);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
   
   return (
     <motion.div
@@ -193,11 +208,60 @@ const BookingSummary = ({ selectedDate, selectedTime, selectedPackageId, onTimeS
             </>
           )}
         </div>
+        <div className="grid sm:grid-cols-2 gap-4 mt-6">
+          <div>
+            <Label htmlFor="firstName" className="text-white">Prénom</Label>
+            <Input
+              id="firstName"
+              name="firstName"
+              value={form.firstName}
+              onChange={handleChange}
+              required
+              className="bg-slate-800/50 border-slate-700 text-white"
+            />
+          </div>
+          <div>
+            <Label htmlFor="lastName" className="text-white">Nom</Label>
+            <Input
+              id="lastName"
+              name="lastName"
+              value={form.lastName}
+              onChange={handleChange}
+              required
+              className="bg-slate-800/50 border-slate-700 text-white"
+            />
+          </div>
+          <div>
+            <Label htmlFor="phone" className="text-white">Téléphone</Label>
+            <Input
+              id="phone"
+              name="phone"
+              type="tel"
+              value={form.phone}
+              onChange={handleChange}
+              required
+              className="bg-slate-800/50 border-slate-700 text-white"
+            />
+          </div>
+          <div>
+            <Label htmlFor="people" className="text-white">Nombre de personnes</Label>
+            <Input
+              id="people"
+              name="people"
+              type="number"
+              min="1"
+              value={form.people}
+              onChange={handleChange}
+              required
+              className="bg-slate-800/50 border-slate-700 text-white"
+            />
+          </div>
+        </div>
         <Button
           aria-label="Confirmer la réservation"
           className="w-full mt-6 bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 pulse-glow"
           onClick={onReserve}
-          disabled={!selectedDate || !selectedTime || !selectedPackageId}
+          disabled={!selectedDate || !selectedTime || !selectedPackageId || !form.firstName || !form.lastName || !form.phone || !form.people}
         >
           Confirmer la réservation
         </Button>
@@ -211,13 +275,32 @@ const ReservationSection = ({ selectedPackage, onSelectPackage }) => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
   const [currentMonth, setCurrentMonth] = useState(new Date());
+  const [form, setForm] = useState({ firstName: '', lastName: '', phone: '', people: '' });
 
   const handleReservation = async () => {
-    if (!selectedDate || !selectedTime || !selectedPackage) {
+    if (!selectedDate || !selectedTime || !selectedPackage || !form.firstName || !form.lastName || !form.phone || !form.people) {
       toast({
         title: "Informations manquantes",
-        description: "Veuillez sélectionner une date, un horaire et un forfait.",
+        description: "Veuillez remplir tous les champs du formulaire.",
         variant: "destructive"
+      });
+      return;
+    }
+
+    if (!/^\d{10}$/.test(form.phone.replace(/\D/g, ''))) {
+      toast({
+        title: "Téléphone invalide",
+        description: "Veuillez saisir un numéro valide de 10 chiffres.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (parseInt(form.people, 10) <= 0) {
+      toast({
+        title: "Nombre de personnes invalide",
+        description: "Veuillez indiquer un nombre supérieur à 0.",
+        variant: "destructive",
       });
       return;
     }
@@ -232,7 +315,11 @@ const ReservationSection = ({ selectedPackage, onSelectPackage }) => {
       package_name: selectedPkgDetails.name,
       total_price: selectedPkgDetails.price,
       deposit_amount: deposit,
-      status: 'pending_payment', 
+      first_name: form.firstName,
+      last_name: form.lastName,
+      phone: form.phone,
+      num_people: parseInt(form.people, 10),
+      status: 'pending_payment',
     };
 
     const { data, error } = await supabase
@@ -258,6 +345,7 @@ const ReservationSection = ({ selectedPackage, onSelectPackage }) => {
         description: `L'intégration Payplug pour l'acompte de ${deposit}€ n'est pas encore active. Veuillez suivre les instructions pour la configurer.`,
         duration: 9000,
       });
+      setForm({ firstName: '', lastName: '', phone: '', people: '' });
     }
   };
   
@@ -270,7 +358,7 @@ const ReservationSection = ({ selectedPackage, onSelectPackage }) => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-gradient mb-6">Réservez votre session</h2>
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gradient mb-6">Réservez votre session</h2>
           <p className="text-xl text-gray-300">Sélectionnez votre date et horaire préférés</p>
         </motion.div>
 
@@ -282,11 +370,13 @@ const ReservationSection = ({ selectedPackage, onSelectPackage }) => {
               onDateSelect={setSelectedDate}
               onMonthChange={setCurrentMonth}
             />
-            <BookingSummary 
+            <BookingSummary
               selectedDate={selectedDate}
               selectedTime={selectedTime}
-              selectedPackageId={selectedPackage} 
+              selectedPackageId={selectedPackage}
               onTimeSelect={setSelectedTime}
+              form={form}
+              setForm={setForm}
               onReserve={handleReservation}
             />
           </div>

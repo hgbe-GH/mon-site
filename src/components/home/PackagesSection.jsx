@@ -11,7 +11,7 @@ const packagesData = [
     duration: '40–60 min',
     players: '120 billes',
     description: '',
-    features: ['Équipement complet', 'Briefing sécurité']
+    features: ['Équipement complet', 'Briefing sécurité', 'Missions rapides']
   },
   {
     id: 'mediterranee',
@@ -20,7 +20,7 @@ const packagesData = [
     duration: '60–90 min',
     players: '200 billes',
     description: '',
-    features: ['Équipement standard', 'Scénarios variés']
+    features: ['Équipement standard', 'Scénarios variés', 'Collation offerte']
   },
   {
     id: 'player',
@@ -29,7 +29,7 @@ const packagesData = [
     duration: '90–120 min',
     players: '300 billes',
     description: '',
-    features: ['Équipement premium', '1 recharge offerte']
+    features: ['Équipement premium', '1 recharge offerte', 'Missions variées']
   },
   {
     id: 'punisher',
@@ -38,7 +38,7 @@ const packagesData = [
     duration: '90–120 min',
     players: '400 billes',
     description: '',
-    features: ['Équipement pro', 'Missions spéciales']
+    features: ['Équipement pro', 'Missions spéciales', 'Collation incluse']
   },
   {
     id: 'expendable',
@@ -47,16 +47,16 @@ const packagesData = [
     duration: 'jusqu\u2019\u00e0 3h',
     players: '600 billes',
     description: '',
-    features: ['Repas inclus', 'Animateur d\u00e9di\u00e9']
+    features: ['Équipement pro complet', 'Repas inclus', 'Missions illimitées']
   },
   {
     id: 'gotcha',
-    name: 'Enfant Gotcha',
+    name: 'Gotcha Enfants – \u00e0 partir de 8 ans (8–12 ans)',
     price: 20,
-    duration: '6–10 ans',
-    players: 'Billes lavables',
+    duration: '60 min',
+    players: '200 billes lavables',
     description: '',
-    features: ['Lanceurs \u00e0 ressort', 'Animateur inclus']
+    features: ['Lanceurs \u00e0 ressort', 'Équipement complet', 'Animateur inclus']
   }
 ];
 
@@ -70,7 +70,7 @@ const PackagesSection = ({ selectedPackage, onSelectPackage }) => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-gradient mb-6">Nos forfaits</h2>
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gradient mb-6">Nos forfaits</h2>
           <p className="text-xl text-gray-300">Choisissez l'expérience qui vous correspond, pour adultes et enfants.</p>
         </motion.div>
 
@@ -94,7 +94,7 @@ const PackagesSection = ({ selectedPackage, onSelectPackage }) => {
               )}
                {pkg.id === 'gotcha' && (
                 <div className="absolute top-4 left-4 bg-gradient-to-r from-blue-500 to-teal-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                  <Kid className="w-4 h-4 inline mr-1" /> Enfants 6-10
+                  <Kid className="w-4 h-4 inline mr-1" /> Enfants 8-12
                 </div>
               )}
               <div className="text-center mb-6">

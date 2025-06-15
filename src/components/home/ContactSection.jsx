@@ -14,7 +14,7 @@ const ContactSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-gradient mb-6">Contactez-nous</h2>
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gradient mb-6">Contactez-nous</h2>
           <p className="text-xl text-gray-300">Une question ? Nous sommes là pour vous aider !</p>
         </motion.div>
 

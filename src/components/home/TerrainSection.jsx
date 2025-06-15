@@ -17,7 +17,7 @@ const TerrainSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-gradient mb-6">Découvrez nos terrains et espaces</h2>
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gradient mb-6">Découvrez nos terrains et espaces</h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Plusieurs terrains de jeu, des niveaux de difficulté variés, et un espace détente unique.
           </p>
