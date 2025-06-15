@@ -87,11 +87,10 @@ const Footer = () => (
         <div>
           <p className="text-lg font-semibold text-white mb-4">Contact & Horaires</p>
           <div className="space-y-2 text-gray-300">
-            <p className="flex items-center"><Phone className="w-4 h-4 mr-2 text-orange-400" /> 04 67 XX XX XX</p>
+            <p className="flex items-center"><Phone className="w-4 h-4 mr-2 text-orange-400" /> 06 23 73 50 02</p>
             <p className="flex items-center"><Mail className="w-4 h-4 mr-2 text-orange-400" /> contact@paintball-mediterranee.fr</p>
-            <p>Lundi - Vendredi: 9h - 18h</p>
-            <p>Samedi - Dimanche: 8h - 19h</p>
-            <p className="text-orange-400">Réservation obligatoire</p>
+            <p>Tous les jours sur réservation</p>
+            <p>Fermé mardi et jeudi matin</p>
           </div>
         </div>
       </div>
