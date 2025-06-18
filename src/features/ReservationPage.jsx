@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { packagesData } from '@/components/home/PackagesSection';
 
 const ReservationPage = () => {
-  const location = useLocation();
-  const initialDate = location.state?.selectedDate || '';
+  const router = useRouter();
+  const initialDate = router.query.date || '';
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
