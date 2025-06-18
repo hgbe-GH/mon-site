@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -277,12 +277,13 @@ const ReservationSection = ({ selectedPackage, onSelectPackage }) => {
   const [selectedTime, setSelectedTime] = useState(null);
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [form, setForm] = useState({ firstName: '', lastName: '', phone: '', people: '' });
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleGoToReservationPage = () => {
     if (selectedDate) {
-      navigate('/reservation', {
-        state: { selectedDate: selectedDate.toISOString().split('T')[0] },
+      router.push({
+        pathname: '/reservation',
+        query: { date: selectedDate.toISOString().split('T')[0] },
       });
     }
   };
