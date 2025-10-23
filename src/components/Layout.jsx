@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Toaster } from '@/components/ui/toaster';
 import { Phone, Mail, Briefcase } from 'lucide-react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
+import { Toaster } from '@/components/ui/toaster';
 
 const newLogoUrl = "https://storage.googleapis.com/hostinger-horizons-assets-prod/d920d526-dc48-47a4-aa51-9f37007af78b/4e66082661f8aeef2e96d545bee304c1.png";
 
@@ -27,7 +29,14 @@ export default function Layout({ children }) {
           <div className="container mx-auto px-4 py-3">
             <div className="flex items-center justify-between">
               <Link href="/" className="flex items-center space-x-2">
-                <img src={newLogoUrl} alt="Logo Paintball Méditerranée" className="h-12 w-auto" />
+                <Image
+                  src={newLogoUrl}
+                  alt="Logo Paintball Méditerranée"
+                  width={192}
+                  height={64}
+                  className="h-12 w-auto"
+                  priority
+                />
                 <div>
                   <h1 className="text-sm font-bold text-gradient hidden sm:block">Paintball Méditerranée</h1>
                   <p className="text-xs text-gray-300 hidden sm:block">Montpellier</p>
@@ -64,7 +73,13 @@ function Footer() {
         <div className="grid md:grid-cols-3 gap-8">
           <div>
             <Link href="/" className="flex items-center space-x-3 mb-4">
-              <img src={newLogoUrl} alt="Logo Paintball Méditerranée Footer" className="h-10 w-auto" />
+              <Image
+                src={newLogoUrl}
+                alt="Logo Paintball Méditerranée Footer"
+                width={160}
+                height={60}
+                className="h-10 w-auto"
+              />
               <span className="text-xl font-bold text-gradient">Paintball Méditerranée</span>
             </Link>
             <p className="text-gray-300">

@@ -1,15 +1,14 @@
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { MapPin, Sun, Moon, Waves, Flame as Grill } from 'lucide-react';
 
 const terrainImage1Url = "https://storage.googleapis.com/hostinger-horizons-assets-prod/d920d526-dc48-47a4-aa51-9f37007af78b/70424eca1620c7e8ae4769c73ade1bbd.png";
 const terrainImage2Url = "https://storage.googleapis.com/hostinger-horizons-assets-prod/d920d526-dc48-47a4-aa51-9f37007af78b/d1e0c8cd051b8502e829070032262bae.png";
 const terrainImage3Url = "https://storage.googleapis.com/hostinger-horizons-assets-prod/d920d526-dc48-47a4-aa51-9f37007af78b/a85ef82f531437dbdabe59c591d49141.png";
-
-
 const TerrainSection = () => {
   return (
-  <section id="terrain" className="py-12 sm:py-20">
+    <section id="terrain" className="py-12 sm:py-20">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ y: 50, opacity: 0 }}
@@ -57,18 +56,30 @@ const TerrainSection = () => {
             viewport={{ once: true }}
             className="grid grid-cols-2 gap-4 overflow-hidden"
           >
-            <img
+            <Image
               alt="Espace extérieur arboré du site de paintball"
-              className="rounded-xl w-full aspect-video max-h-60 sm:max-h-full object-cover shadow-lg"
-              src={terrainImage1Url} />
-            <img
+              className="rounded-xl w-full object-cover shadow-lg"
+              src={terrainImage1Url}
+              width={640}
+              height={360}
+              sizes="(min-width: 1024px) 50vw, 100vw"
+            />
+            <Image
               alt="Animateur briefant un groupe de joueurs de paintball"
-              className="rounded-xl w-full aspect-video max-h-60 sm:max-h-full object-cover shadow-lg"
-              src={terrainImage2Url} />
-            <img
+              className="rounded-xl w-full object-cover shadow-lg"
+              src={terrainImage2Url}
+              width={640}
+              height={360}
+              sizes="(min-width: 1024px) 50vw, 100vw"
+            />
+            <Image
               alt="Passage couvert de bambous menant aux terrains de paintball"
-              className="rounded-xl w-full aspect-video max-h-60 sm:max-h-full object-cover col-span-2 shadow-lg"
-              src={terrainImage3Url} />
+              className="rounded-xl w-full object-cover col-span-2 shadow-lg"
+              src={terrainImage3Url}
+              width={960}
+              height={540}
+              sizes="(min-width: 1024px) 100vw, 100vw"
+            />
           </motion.div>
         </div>
       </div>

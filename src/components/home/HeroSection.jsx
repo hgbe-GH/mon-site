@@ -1,6 +1,8 @@
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Star, ChevronRight } from 'lucide-react';
+
 import { Button } from '@/components/ui/button';
 
 const heroImageUrl = "https://storage.googleapis.com/hostinger-horizons-assets-prod/d920d526-dc48-47a4-aa51-9f37007af78b/59edf7f8765c946070a3a950a4768cf4.png";
@@ -40,10 +42,15 @@ const HeroSection = () => {
             className="relative"
           >
             <div className="float-animation">
-              <img
+              <Image
                 alt="Joueur de paintball en armure de lapin futuriste"
-                className="rounded-2xl shadow-2xl w-full aspect-video object-cover"
-                src={heroImageUrl} />
+                className="rounded-2xl shadow-2xl w-full object-cover"
+                src={heroImageUrl}
+                width={1280}
+                height={720}
+                priority
+                sizes="(min-width: 1024px) 540px, 100vw"
+              />
             </div>
             <div className="absolute -bottom-6 -left-6 glass-effect rounded-xl p-4">
               <div className="flex items-center space-x-2">
