@@ -19,7 +19,7 @@ const HeroSection = () => {
               Paintball Méditerranée – le meilleur terrain de Montpellier
             </h1>
             <p className="text-sm sm:text-xl text-gray-300 mb-8 leading-relaxed">
-              3 terrains de 4 hectares en pleine nature, en bord de rivière, avec zones ombragées, buvette, fléchettes et pétanque. Dès 7 ans, billes biodégradables. Réservation obligatoire.
+              Nous vous accueillons dans un cadre boisé en lisière de rivière avec zones ombragées, buvette, pétanque, fléchettes et molky pour prolonger la journée. Sessions à partir de 8 joueurs, paintball ou gellyball dès 8 ans avec billes calibre .50 adaptées aux familles.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button

@@ -713,6 +713,33 @@ const ReservationSection = ({ selectedPackage, onSelectPackage }) => {
             />
           </div>
         </div>
+
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto mt-12 glass-effect rounded-xl p-4 sm:p-6 text-left"
+        >
+          <h3 className="text-lg sm:text-xl font-semibold text-white mb-4">Informations importantes</h3>
+          <p className="text-sm sm:text-base text-gray-200">
+            Pour valider votre réservation, merci de déposer un acompte en ligne. Il vous sera restitué sur place :
+            {' '}
+            <a
+              href="https://www.paintballmediterranee.com/produit.php?id_prod=1"
+              target="_blank"
+              rel="noreferrer"
+              className="text-orange-300 underline decoration-dotted underline-offset-2 hover:text-orange-200"
+            >
+              déposer mon acompte
+            </a>
+            .
+          </p>
+          <ul className="mt-4 space-y-2 text-sm sm:text-base text-gray-300">
+            <li>Sessions à partir de 8 joueurs.</li>
+            <li>En dessous de 8 personnes, les participants manquants sont facturés 25€ par personne.</li>
+            <li>Merci d’arriver 5 minutes avant l’heure de rendez-vous et pensez au covoiturage.</li>
+          </ul>
+        </motion.div>
       </div>
     </section>
   );
