@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import HeroSection from '@/components/home/HeroSection';
 import FeaturesSection from '@/components/home/FeaturesSection';
 import TerrainSection from '@/components/home/TerrainSection';
-import PackagesSection from '@/components/home/PackagesSection';
+import PackagesSection, { packagesData } from '@/components/home/PackagesSection';
 import ReservationSection from '@/components/home/ReservationSection';
 import ContactSection from '@/components/home/ContactSection';
 
 const HomePage = () => {
-  const [selectedPackage, setSelectedPackage] = useState(null);
+  const [selectedPackage, setSelectedPackage] = useState(() => packagesData[0]?.id ?? null);
 
   return (
     <>

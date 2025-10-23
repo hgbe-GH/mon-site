@@ -402,6 +402,15 @@ const ReservationSection = ({ selectedPackage, onSelectPackage }) => {
 
   const router = useRouter();
 
+  const defaultPackageId = packagesData[0]?.id ?? null;
+  const effectiveSelectedPackageId = selectedPackage ?? defaultPackageId;
+
+  useEffect(() => {
+    if (!selectedPackage && defaultPackageId && onSelectPackage) {
+      onSelectPackage(defaultPackageId);
+    }
+  }, [selectedPackage, defaultPackageId, onSelectPackage]);
+
   const selectedDateKey = selectedDate ? formatDate(selectedDate) : null;
 
   useEffect(() => {
@@ -523,8 +532,8 @@ const ReservationSection = ({ selectedPackage, onSelectPackage }) => {
 
     const query = { date: formatDate(selectedDate) };
 
-    if (selectedPackage) {
-      query.package = selectedPackage;
+    if (effectiveSelectedPackageId) {
+      query.package = effectiveSelectedPackageId;
     }
 
     if (selectedTime) {
@@ -538,7 +547,7 @@ const ReservationSection = ({ selectedPackage, onSelectPackage }) => {
     if (
       !selectedDate ||
       !selectedTime ||
-      !selectedPackage ||
+      !effectiveSelectedPackageId ||
       !form.firstName ||
       !form.lastName ||
       !form.email ||
@@ -572,7 +581,7 @@ const ReservationSection = ({ selectedPackage, onSelectPackage }) => {
       return;
     }
 
-    const selectedPkgDetails = packagesData.find((pkg) => pkg.id === selectedPackage);
+    const selectedPkgDetails = packagesData.find((pkg) => pkg.id === effectiveSelectedPackageId);
 
     if (!selectedPkgDetails) {
       toast({
@@ -590,7 +599,7 @@ const ReservationSection = ({ selectedPackage, onSelectPackage }) => {
       lastName: form.lastName.trim(),
       email: form.email.trim(),
       phone: form.phone.trim(),
-      package: selectedPackage,
+      package: effectiveSelectedPackageId,
       people: peopleCount,
       date: formatDate(selectedDate),
       total,
@@ -693,7 +702,7 @@ const ReservationSection = ({ selectedPackage, onSelectPackage }) => {
             <BookingSummary
               selectedDate={selectedDate}
               selectedTime={selectedTime}
-              selectedPackageId={selectedPackage}
+              selectedPackageId={effectiveSelectedPackageId}
               onTimeSelect={setSelectedTime}
               form={form}
               setForm={setForm}
