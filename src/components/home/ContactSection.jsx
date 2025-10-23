@@ -28,7 +28,7 @@ const ContactSection = () => {
             <div className="glass-effect rounded-xl p-4 sm:p-6">
               <Phone className="w-8 h-8 text-orange-400 mb-4" />
               <h3 className="text-xl font-semibold text-white mb-2">Téléphone</h3>
-              <p className="text-gray-300">06 23 73 50 02</p>
+              <p className="text-gray-300">Tommy : 06 23 73 50 02</p>
               <p className="text-sm text-gray-400">Ouvert tous les jours sur réservation</p>
               <p className="text-sm text-gray-400">Fermé mardi et jeudi matin</p>
             </div>
@@ -42,7 +42,15 @@ const ContactSection = () => {
               <MapPin className="w-8 h-8 text-orange-400 mb-4" />
               <h3 className="text-xl font-semibold text-white mb-2">Adresse</h3>
               <p className="text-gray-300">140 Passage Charles Tillon,<br />34070 Montpellier</p>
-              <p className="text-sm text-gray-400">Parking gratuit sur site</p>
+              <p className="text-sm text-gray-400 mt-3">
+                Au rond-point de Chez Paulette, prenez la piste cyclable : notre parking est à 100&nbsp;m sur la droite.
+              </p>
+              <p className="text-sm text-gray-400">
+                Waze vous guide jusqu’à nos portes. Merci d’arriver 5&nbsp;minutes avant l’heure de rendez-vous 🤠
+              </p>
+              <p className="text-sm text-gray-400">
+                Notre petit parking – et la planète – encouragent le covoiturage 😇
+              </p>
             </div>
           </motion.div>
           <motion.div
