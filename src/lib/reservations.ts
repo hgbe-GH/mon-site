@@ -30,7 +30,28 @@ export const reservationSchema = z
 
 export type ReservationInput = z.infer<typeof reservationSchema>;
 
-export async function createReservation(input: ReservationInput) {
+export type ReservationRecord = {
+  id: number | string;
+  date: string;
+  packageId: string | null;
+  people: number | null;
+};
+
+function mapReservationRow(row: {
+  id: number | string;
+  date: string;
+  package_id?: string | null;
+  people?: number | null;
+}): ReservationRecord {
+  return {
+    id: row.id,
+    date: row.date,
+    packageId: row.package_id ?? null,
+    people: row.people ?? null,
+  };
+}
+
+export async function createReservation(input: ReservationInput): Promise<ReservationRecord> {
   const payload = {
     first_name: input.firstName,
     last_name: input.lastName,
@@ -46,12 +67,34 @@ export async function createReservation(input: ReservationInput) {
   const { data, error } = await supabase
     .from('reservations')
     .insert(payload)
-    .select()
+    .select('id, date, package_id, people')
     .single();
 
   if (error) {
     throw new Error(error.message);
   }
 
-  return data;
+  return mapReservationRow(data);
+}
+
+export async function listReservations(params: { from?: string; to?: string } = {}): Promise<ReservationRecord[]> {
+  let query = supabase.from('reservations').select('id, date, package_id, people');
+
+  if (params.from) {
+    query = query.gte('date', params.from);
+  }
+
+  if (params.to) {
+    query = query.lte('date', params.to);
+  }
+
+  query = query.order('date', { ascending: true });
+
+  const { data, error } = await query;
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return (data ?? []).map(mapReservationRow);
 }

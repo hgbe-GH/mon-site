@@ -9,6 +9,9 @@ import { reservationSchema } from '@/lib/reservations';
 const ReservationPage = () => {
   const router = useRouter();
   const selectedDate = typeof router.query.date === 'string' ? router.query.date : '';
+  const selectedPackageFromQuery =
+    typeof router.query.package === 'string' ? router.query.package : '';
+  const selectedTimeFromQuery = typeof router.query.time === 'string' ? router.query.time : '';
 
   const defaultPackageId = useMemo(() => packagesData[0]?.id || '', []);
 
@@ -32,6 +35,17 @@ const ReservationPage = () => {
       setFormData((prev) => ({ ...prev, date: selectedDate }));
     }
   }, [selectedDate]);
+
+  useEffect(() => {
+    if (!selectedPackageFromQuery) {
+      return;
+    }
+
+    const packageExists = packagesData.some((pkg) => pkg.id === selectedPackageFromQuery);
+    if (packageExists) {
+      setFormData((prev) => ({ ...prev, package: selectedPackageFromQuery }));
+    }
+  }, [selectedPackageFromQuery]);
 
   useEffect(() => {
     const unit = packagesData.find((p) => p.id === formData.package)?.price || 0;
@@ -206,6 +220,14 @@ const ReservationPage = () => {
                 min={new Date().toISOString().split('T')[0]}
               />
             </div>
+            {selectedTimeFromQuery && (
+              <div className="md:col-span-2">
+                <Label>Créneau sélectionné depuis l'agenda</Label>
+                <p className="mt-2 rounded-md border border-dashed border-orange-200 bg-orange-50 px-3 py-2 text-sm text-orange-700">
+                  {selectedTimeFromQuery}
+                </p>
+              </div>
+            )}
           </div>
 
           <div
